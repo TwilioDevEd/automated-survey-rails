@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+- rvm 2.3.0
+
+before_script:
+- RAILS_ENV=test rake db:create db:migrate
+
+install:
+- bundle install
