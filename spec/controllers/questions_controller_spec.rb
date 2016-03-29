@@ -2,21 +2,21 @@ require 'rails_helper'
 
 describe QuestionsController do
   describe '#show' do
+    let(:question) { double(:question, body: 'do you like bears?') }
+
     before do
-      question = double(:question, body: 'do you like bears?')
-      allow(Question).to receive(:find).with('1')  { question }
+      allow(Question).to receive(:find).with('1') { question }
+      allow(CreateResponse).to receive(:for).with(question) { '<response />' }
       get :show, id: '1'
     end
 
-    it 'responds with a question body' do
-      document = Nokogiri::XML(response.body)
-      expect(document.at_xpath('//Response//Say').content)
-        .to eq('do you like bears?')
+    it 'finds a given question' do
+      expect(Question).to have_received(:find).with('1').once
     end
 
-    it 'responds with instructions'
-
-    it 'responds with record or gather'
+    it 'creates a response for the given question' do
+      expect(CreateResponse).to have_received(:for).with(question).once
+    end
 
     it 'responds with ok' do
       expect(response).to be_ok
