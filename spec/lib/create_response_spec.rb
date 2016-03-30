@@ -27,7 +27,7 @@ describe CreateResponse do
 
       it 'uses a record with an action to the given question' do
         expect(content_for('/Response/Record/@action'))
-          .to eq('/questions/1')
+          .to eq('/answers?question_id=1')
       end
     end
 
@@ -42,7 +42,7 @@ describe CreateResponse do
 
       it 'uses a gather with an action to the given question' do
         expect(content_for('/Response/Gather/@action'))
-          .to eq('/questions/1')
+          .to eq('/answers?question_id=1')
       end
     end
 
@@ -57,7 +57,7 @@ describe CreateResponse do
 
       it 'uses a gather with an action to the given question' do
         expect(content_for('/Response/Gather/@action'))
-          .to eq('/questions/1')
+          .to eq('/answers?question_id=1')
       end
     end
   end

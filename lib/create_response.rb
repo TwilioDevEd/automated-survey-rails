@@ -20,9 +20,9 @@ class CreateResponse
       r.Say question.body
       r.Say INSTRUCTIONS.fetch(question.type)
       if question.free?
-        r.Record action: question_path(question.id)
+        r.Record action: answers_path(question.id)
       else
-        r.Gather action: question_path(question.id)
+        r.Gather action: answers_path(question.id)
       end
     end.to_xml
   end
@@ -31,7 +31,7 @@ class CreateResponse
 
   attr_reader :question
 
-  def question_path(id)
-    "/questions/#{id}"
+  def answers_path(id)
+    "/answers?question_id=#{id}"
   end
 end
