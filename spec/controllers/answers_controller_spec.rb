@@ -1,28 +1,36 @@
 require 'rails_helper'
 
 describe AnswersController do
-  let(:survey) { Survey.create(title: 'Bees') }
-  let(:question) do
-    Question.create(survey: survey, body: 'do you like bees?')
-  end
+  let(:survey)   { Survey.create(title: 'Bees') }
+  let(:question) { Question.create(survey: survey, body: 'question') }
 
   describe '#create' do
-    subject { post :create, attributes_for_answer }
+    let(:next_question) { double(:question) }
 
-    it 'creates an answer' do
+    before do |example|
+      allow(FindNextQuestion).to receive(:for).with(question.id.to_s)
+        .and_return(next_question)
+      allow(CreateResponse).to receive(:for).with(next_question)
+        .and_return('<response />')
+
+      unless example.metadata[:skip_before]
+        post :create, attributes_for_answer
+      end
+    end
+
+    it 'creates an answer', skip_before: true do
       expect do
-        subject
+        post :create, attributes_for_answer
       end.to change { Answer.count }.by(1)
     end
 
-    it 'finds the next question'
-
-    context 'when there are available questions' do
-      it 'creates a response for the next question'
+    it 'finds the next question' do
+      question_id = question.id.to_s
+      expect(FindNextQuestion).to have_received(:for).with(question_id).once
     end
 
-    context 'when there are no more questions' do
-      it 'creates a response for closing the survey'
+    it 'creates a response for the given question' do
+      expect(CreateResponse).to have_received(:for).with(next_question).once
     end
 
     it 'responds with ok' do

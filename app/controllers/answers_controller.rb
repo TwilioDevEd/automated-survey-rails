@@ -1,7 +1,10 @@
 class AnswersController < ApplicationController
   def create
+    # XXX: Think on some business object which encapsulates this interaction
+    # like a coordinator.
     Answer.create(answer_params)
-    render nothing: true
+    next_question    = FindNextQuestion.for(params[:question_id])
+    render xml: CreateResponse.for(next_question)
   end
 
   private
