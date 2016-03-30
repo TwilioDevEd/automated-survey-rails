@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  NoQuestion = Class.new
+
   # Use type column without STI
   self.inheritance_column = nil
 
