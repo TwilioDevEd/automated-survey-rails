@@ -1,40 +1,34 @@
 require 'rails_helper'
 
 describe AnswersController do
-  let(:survey)   { Survey.create(title: 'Bees') }
-  let(:question) { Question.create(survey: survey, body: 'question') }
-
   describe '#create' do
-    let(:next_question) { double(:question) }
+    let(:survey)   { Survey.create(title: 'Bees') }
+    let(:question) { first_question }
+    let!(:first_question) { Question.create(survey: survey, body: 'first') }
+    let!(:last_question)  { Question.create(survey: survey, body: 'last') }
 
-    before do |example|
-      allow(FindNextQuestion).to receive(:for).with(question.id.to_s)
-        .and_return(next_question)
-      allow(CreateResponse).to receive(:for).with(next_question)
-        .and_return('<response />')
-
-      unless example.metadata[:skip_before]
-        post :create, attributes_for_answer
-      end
-    end
-
-    it 'creates an answer', skip_before: true do
+    it 'creates an answer' do
       expect do
         post :create, attributes_for_answer
       end.to change { Answer.count }.by(1)
     end
 
-    it 'finds the next question' do
-      question_id = question.id.to_s
-      expect(FindNextQuestion).to have_received(:for).with(question_id).once
+    context 'when there are more available questions' do
+      let(:question) { first_question }
+
+      it 'responds with the next question' do
+        post :create, attributes_for_answer
+        expect(response.body).to include('last')
+      end
     end
 
-    it 'creates a response for the given question' do
-      expect(CreateResponse).to have_received(:for).with(next_question).once
-    end
+    context 'when there are no more available questions' do
+      let(:question) { last_question }
 
-    it 'responds with ok' do
-      expect(response).to be_ok
+      it 'responds with the thanks message' do
+        post :create, attributes_for_answer
+        expect(response.body).to include('Thanks')
+      end
     end
   end
 
