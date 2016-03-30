@@ -16,6 +16,8 @@ class CreateResponse
   end
 
   def response
+    return exit_message if question == Question::NoQuestion
+
     Twilio::TwiML::Response.new do |r|
       r.Say question.body
       r.Say INSTRUCTIONS.fetch(question.type)
@@ -30,6 +32,13 @@ class CreateResponse
   private
 
   attr_reader :question
+
+  def exit_message
+    Twilio::TwiML::Response.new do |r|
+      r.Say 'Thanks for your time. Good bye'
+      r.Hangup
+    end.to_xml
+  end
 
   def answers_path(id)
     "/answers?question_id=#{id}"

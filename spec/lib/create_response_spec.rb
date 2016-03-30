@@ -1,8 +1,12 @@
 require 'nokogiri'
 require_relative '../../lib/create_response'
 
+class Question; NoQuestion = Class.new; end
+
 describe CreateResponse do
   describe '.for' do
+    subject { described_class.for(question) }
+
     let(:question_type) { 'free' }
     let(:free?)         { true }
     let(:question) do
@@ -12,11 +16,9 @@ describe CreateResponse do
              type:  question_type)
     end
 
-    subject { described_class.for(question) }
-
     it 'creates a response with the question body' do
       expect(content_for('/Response/Say[1]'))
-      .to eq('do you like bears?')
+        .to eq('do you like bears?')
     end
 
     context 'when the question type is "free"' do
@@ -58,6 +60,19 @@ describe CreateResponse do
       it 'uses a gather with an action to the given question' do
         expect(content_for('/Response/Gather/@action'))
           .to eq('/answers?question_id=1')
+      end
+    end
+
+    context 'when the question is Question::NoQuestion' do
+      let(:question) { Question::NoQuestion }
+
+      it 'responds with a closing message' do
+        expect(content_for('/Response/Say'))
+          .to eq('Thanks for your time. Good bye')
+      end
+
+      it 'responds hanging up' do
+        expect(content_for('/Response/Hangup')).to_not be_nil
       end
     end
   end
