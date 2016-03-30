@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
   def create
-    render nothing: true
+j   render nothing: true
   end
 end
