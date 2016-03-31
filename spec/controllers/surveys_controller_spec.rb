@@ -29,12 +29,15 @@ describe SurveysController do
     let!(:first_question) { create(:question, survey: survey, body: 'first') }
     let!(:last_question)  { create(:question, survey: survey, body: 'last') }
 
-    context 'when the first message arrives' do
-      before { post :sms }
+    context 'when the user replies to a question' do
+      before do
+        request.cookies[:question] = first_question.serializable_hash.to_yaml
+        post :sms, Body: 'yes'
+      end
 
-      it 'responds with a welcome message' do
+      it 'responds with the next question' do
         expect(content_for('/Response/Message/Body'))
-          .to eq('Thank you for taking the bees survey')
+          .to eq("last\n\nReply to this message with your answer")
       end
     end
 

@@ -1,25 +1,28 @@
 module SMS
   class TrackedQuestion
-    NoQuestion = Class.new
-
     def initialize(cookies)
       @cookies = cookies
     end
 
-    def store(question_id)
-      cookies[:question_id] = question_id
+    def store_or_destroy(question)
+      if question == Question::NoQuestion
+        destroy
+      else
+        cookies[:question] = serialize(question)
+      end
     end
 
     def fetch
-      cookies.fetch(:question_id, NoQuestion)
+      question = cookies.fetch(:question)
+      deserialize(question)
     end
 
     def destroy
-      cookies[:question_id] = nil
+      cookies[:question] = nil
     end
 
     def empty?
-      cookies[:question_id].nil?
+      cookies[:question].nil?
     end
 
     def present?
@@ -29,5 +32,13 @@ module SMS
     private
 
     attr_reader :cookies
+
+    def serialize(question)
+      question.serializable_hash.to_yaml
+    end
+
+    def deserialize(question)
+      Question.new(YAML.load(question))
+    end
   end
 end

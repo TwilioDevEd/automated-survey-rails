@@ -5,8 +5,7 @@ class SurveysController < ApplicationController
   end
 
   def sms
-    survey = Survey.first
-    render xml: welcome_message_for_sms(survey)
+    render xml: SMS::ReplyProcessor.process(user_response, cookies)
   end
 
   private
@@ -19,14 +18,6 @@ class SurveysController < ApplicationController
     Twilio::TwiML::Response.new do |r|
       r.Say "Thank you for taking the #{survey.title} survey"
       r.Redirect question_path(survey.first_question.id)
-    end.to_xml
-  end
-
-  def welcome_message_for_sms(survey)
-    Twilio::TwiML::Response.new do |r|
-      r.Message do |msg|
-        msg.Body "Thank you for taking the #{survey.title} survey"
-      end
     end.to_xml
   end
 end

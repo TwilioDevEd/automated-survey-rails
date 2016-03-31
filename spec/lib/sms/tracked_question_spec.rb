@@ -1,68 +1,73 @@
-require_relative '../../../lib/sms/tracked_question'
+# require_relative '../../../lib/sms/tracked_question'
+require 'rails_helper'
 
 describe SMS::TrackedQuestion do
-  subject(:current_question) { described_class.new(cookies) }
+  subject(:tracked_question) { described_class.new(cookies) }
 
-  describe '#store' do
+  let!(:question)            { build_stubbed(:question) }
+  let!(:serialized_question) { question.serializable_hash.to_yaml }
+
+  describe '#store_or_destroy' do
     let(:cookies) { {} }
 
-    it 'stores the current question id' do
-      current_question.store('1')
-      expect(cookies[:question_id]).to eq('1')
+    it 'stores the question' do
+      tracked_question.store_or_destroy(question)
+      expect(cookies[:question]).to eq(serialized_question)
+    end
+
+    context 'when the given question is Question::NoQuestion' do
+      let(:cookies) { { question: serialized_question } }
+
+      it 'destroys the question' do
+        subject.store_or_destroy(Question::NoQuestion)
+        expect(cookies[:question]).to be_nil
+      end
     end
   end
 
   describe '#fetch' do
-    context 'when there are a current question id' do
-      let(:cookies) { { question_id: '1'} }
+    context 'when there are a tracked question' do
+      let(:cookies) { { question: serialized_question } }
 
-      it 'returns the current question id' do
-        expect(current_question.fetch).to eq('1')
-      end
-    end
-
-    context 'when there are no current question' do
-      let(:cookies) { {} }
-
-      it 'returns the SMS::CurrentQuestion::NoQuestion' do
-        expect(current_question.fetch).to eq(SMS::TrackedQuestion::NoQuestion)
+      it 'returns the question' do
+        expect(tracked_question.fetch).to eq(question)
       end
     end
   end
 
   describe '#destroy' do
-    let(:cookies) { { question_id: '1'} }
+    let(:cookies) { { question: serialized_question } }
 
-    it 'destroys the current question id' do
+    it 'destroys the question' do
       subject.destroy
-      expect(cookies[:question_id]).to be_nil
+      expect(cookies[:question]).to be_nil
     end
   end
 
   describe '#empty?' do
-    context 'when there are no current question' do
+    context 'when there is no tracked question' do
       let(:cookies) { {} }
 
-      it 'returns false' do
-        expect(current_question.empty?).to be_truthy
+      it 'returns true' do
+        expect(tracked_question.empty?).to be_truthy
       end
     end
 
-    context 'when there are a current question id' do
-      let(:cookies) { { question_id: '1'} }
+    context 'when there is a tracked question' do
+      let(:cookies) { { question: serialized_question } }
 
-      it 'returns true' do
-        expect(current_question.empty?).to be_falsey
+      it 'returns false' do
+        expect(tracked_question.empty?).to be_falsey
       end
     end
   end
 
   describe '#present?' do
-    context 'when there are a current question id' do
-      let(:cookies) { { question_id: '1'} }
+    context 'when there is a tracked question' do
+      let(:cookies) { { question: serialized_question } }
 
       it 'returns true' do
-        expect(current_question.present?).to be_truthy
+        expect(tracked_question.present?).to be_truthy
       end
     end
   end
