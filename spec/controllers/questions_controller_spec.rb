@@ -2,20 +2,13 @@ require 'rails_helper'
 
 describe QuestionsController do
   describe '#show' do
-    let(:question) { double(:question, body: 'do you like bears?') }
+    let(:survey)   { Survey.create(title: 'survey') }
+    let(:question) { Question.create(survey: survey, body: 'question') }
 
-    before do
-      allow(Question).to receive(:find).with('1') { question }
-      allow(CreateResponse).to receive(:for).with(question) { '<response />' }
-      get :show, id: '1'
-    end
+    before { get :show, id: question.id }
 
-    it 'finds a given question' do
-      expect(Question).to have_received(:find).with('1').once
-    end
-
-    it 'creates a response for the given question' do
-      expect(CreateResponse).to have_received(:for).with(question).once
+    it 'responds with the question' do
+      expect(response.body).to include('question')
     end
 
     it 'responds with ok' do
