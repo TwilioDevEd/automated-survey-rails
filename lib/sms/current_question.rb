@@ -18,6 +18,10 @@ module SMS
       cookies[:question_id] = nil
     end
 
+    def empty?
+      cookies[:question_id].nil?
+    end
+
     private
 
     attr_reader :cookies

@@ -38,4 +38,22 @@ describe SMS::CurrentQuestion do
       expect(cookies[:question_id]).to be_nil
     end
   end
+
+  describe '#empty?' do
+    context 'when there are no current question' do
+      let(:cookies) { {} }
+
+      it 'returns false' do
+        expect(current_question.empty?).to be_truthy
+      end
+    end
+
+    context 'when there are a current question id' do
+      let(:cookies) { { question_id: '1'} }
+
+      it 'returns true' do
+        expect(current_question.empty?).to be_falsey
+      end
+    end
+  end
 end
