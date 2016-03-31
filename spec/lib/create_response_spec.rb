@@ -1,7 +1,4 @@
-require 'nokogiri'
-require_relative '../../lib/create_response'
-
-class Question; NoQuestion = Class.new; end
+require 'rails_helper'
 
 describe CreateResponse do
   describe '.for' do
