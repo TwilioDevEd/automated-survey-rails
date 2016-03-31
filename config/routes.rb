@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post 'voice/connect' => 'voice#connect'
+  post 'surveys/voice' => 'surveys#voice'
 
   resources :questions, only: [:show]
   resources :answers, only: [:create]
