@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe QuestionsController do
   describe '#show' do
-    let(:survey)   { Survey.create(title: 'survey') }
-    let(:question) { Question.create(survey: survey, body: 'question') }
+    let(:survey)   { create(:survey) }
+    let(:question) { create(:question, survey: survey, body: 'question') }
 
     before { get :show, id: question.id }
 

@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe AnswersController do
   describe '#create' do
-    let(:survey)   { Survey.create(title: 'Bees') }
+    let(:survey)   { create(:survey) }
     let(:question) { first_question }
-    let!(:first_question) { Question.create(survey: survey, body: 'first') }
-    let!(:last_question)  { Question.create(survey: survey, body: 'last') }
+    let!(:first_question) { create(:question, survey: survey, body: 'first') }
+    let!(:last_question)  { create(:question, survey: survey, body: 'last') }
 
     it 'creates an answer' do
       expect do

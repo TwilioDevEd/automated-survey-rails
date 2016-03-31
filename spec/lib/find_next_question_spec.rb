@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe FindNextQuestion do
   describe '.for' do
-    let(:survey)          { Survey.create(title: 'survey') }
-    let!(:first_question) { Question.create(survey: survey, body: 'first') }
-    let!(:last_question)  { Question.create(survey: survey, body: 'last') }
+    let(:survey)          { create(:survey) }
+    let!(:first_question) { create(:question, survey: survey, body: 'first') }
+    let!(:last_question)  { create(:question, survey: survey, body: 'last') }
 
     context 'when there are available questions' do
       it 'responds with the next available question' do
