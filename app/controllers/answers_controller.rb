@@ -3,7 +3,7 @@ class AnswersController < ApplicationController
     Answer.create(answer_params)
     current_question = Question.find(params[:question_id])
     next_question    = FindNextQuestion.for(current_question)
-    render xml: CreateResponse.for(next_question)
+    render xml: Voice::CreateResponse.for(next_question)
   end
 
   private

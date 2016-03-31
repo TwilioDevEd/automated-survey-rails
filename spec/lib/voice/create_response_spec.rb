@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe CreateResponse do
+describe Voice::CreateResponse do
   describe '.for' do
     subject { described_class.for(question) }
 
