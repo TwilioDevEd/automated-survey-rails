@@ -1,6 +1,6 @@
-require_relative '../../../lib/sms/current_question'
+require_relative '../../../lib/sms/tracked_question'
 
-describe SMS::CurrentQuestion do
+describe SMS::TrackedQuestion do
   subject(:current_question) { described_class.new(cookies) }
 
   describe '#store' do
@@ -25,7 +25,7 @@ describe SMS::CurrentQuestion do
       let(:cookies) { {} }
 
       it 'returns the SMS::CurrentQuestion::NoQuestion' do
-        expect(current_question.fetch).to eq(SMS::CurrentQuestion::NoQuestion)
+        expect(current_question.fetch).to eq(SMS::TrackedQuestion::NoQuestion)
       end
     end
   end
@@ -53,6 +53,16 @@ describe SMS::CurrentQuestion do
 
       it 'returns true' do
         expect(current_question.empty?).to be_falsey
+      end
+    end
+  end
+
+  describe '#present?' do
+    context 'when there are a current question id' do
+      let(:cookies) { { question_id: '1'} }
+
+      it 'returns true' do
+        expect(current_question.present?).to be_truthy
       end
     end
   end

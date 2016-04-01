@@ -1,5 +1,5 @@
 module SMS
-  class CurrentQuestion
+  class TrackedQuestion
     NoQuestion = Class.new
 
     def initialize(cookies)
@@ -20,6 +20,10 @@ module SMS
 
     def empty?
       cookies[:question_id].nil?
+    end
+
+    def present?
+      !empty?
     end
 
     private
