@@ -19,7 +19,7 @@ class SurveysController < ApplicationController
   def welcome_message_for_voice(survey)
     Twilio::TwiML::Response.new do |r|
       r.Say "Thank you for taking the #{survey.title} survey"
-      r.Redirect question_path(survey.first_question.id)
+      r.Redirect question_path(survey.first_question.id), method: 'GET'
     end.to_xml
   end
 end
