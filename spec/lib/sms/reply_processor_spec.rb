@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe SMS::ReplyProcessor do
   describe '.process' do
-    subject { described_class.process(message, cookies) }
+    subject { described_class.process(message, 'from-phone-number', cookies) }
 
     let(:survey) { create(:survey, title: 'bees') }
 

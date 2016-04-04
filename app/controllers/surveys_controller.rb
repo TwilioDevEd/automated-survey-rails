@@ -7,14 +7,12 @@ class SurveysController < ApplicationController
   end
 
   def sms
-    render xml: SMS::ReplyProcessor.process(user_response, cookies)
+    user_response = params[:Body]
+    from          = params[:From]
+    render xml: SMS::ReplyProcessor.process(user_response, from, cookies)
   end
 
   private
-
-  def user_response
-    params[:Body]
-  end
 
   def welcome_message_for_voice(survey)
     Twilio::TwiML::Response.new do |r|

@@ -1,11 +1,12 @@
 module SMS
   class ReplyProcessor
-    def self.process(message, cookies)
-      new(message, cookies).process
+    def self.process(message, from, cookies)
+      new(message, from, cookies).process
     end
 
-    def initialize(message, cookies)
+    def initialize(message, from, cookies)
       @message = message
+      @from    = from
       @tracked_question = TrackedQuestion.new(cookies)
     end
 
@@ -16,7 +17,7 @@ module SMS
 
     private
 
-    attr_reader :message, :tracked_question
+    attr_reader :message, :from, :tracked_question
 
     def initial_response?
       tracked_question.empty?
@@ -42,7 +43,7 @@ module SMS
         question_id: question.id,
         content: message,
         source: Answer.sources.fetch(:sms),
-        from: 'from'
+        from: from
       }
     end
 
