@@ -34,7 +34,6 @@ describe AnswersController do
 
   private
 
-  # XXX: Check the response from Twilio
   def attributes_for_answer
     {
       From:         '+14155559368',

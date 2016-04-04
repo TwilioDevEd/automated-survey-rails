@@ -14,7 +14,8 @@ class AnswersController < ApplicationController
     {
       from:        params[:From],
       content:     params[:RecordingUrl] || params[:Digits],
-      question_id: params[:question_id]
+      question_id: params[:question_id],
+      call_sid:    params[:CallSid]
     }
   end
 end
