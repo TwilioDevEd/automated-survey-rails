@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :questions, only: [:show]
   resources :answers, only: [:create]
+  resources :transcriptions, only: [:create]
 end

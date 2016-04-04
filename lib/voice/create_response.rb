@@ -21,7 +21,9 @@ module Voice
         r.Say question.body
         r.Say INSTRUCTIONS.fetch(question.type)
         if question.free?
-          r.Record action: answers_path(question.id)
+          r.Record action: answers_path(question.id),
+                   transcribe: true,
+                   transcribeCallback: transcriptions_path(question.id)
         else
           r.Gather action: answers_path(question.id)
         end
@@ -39,8 +41,12 @@ module Voice
       end.to_xml
     end
 
-    def answers_path(id)
-      "/answers?question_id=#{id}"
+    def answers_path(question_id)
+      "/answers?question_id=#{question_id}"
+    end
+
+    def transcriptions_path(question_id)
+      "/transcriptions?question_id=#{question_id}"
     end
   end
 end

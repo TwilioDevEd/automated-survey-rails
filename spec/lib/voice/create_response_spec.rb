@@ -24,6 +24,16 @@ describe Voice::CreateResponse do
         expect(content_for('/Response/Record/@action'))
           .to eq("/answers?question_id=#{question.id}")
       end
+
+      it 'uses a record with transcribe set to true' do
+        expect(content_for('/Response/Record/@transcribe'))
+          .to eq("true")
+      end
+
+      it 'uses a record with a transcribe callback' do
+        expect(content_for('/Response/Record/@transcribeCallback'))
+          .to eq("/transcriptions?question_id=#{question.id}")
+      end
     end
 
     context 'when the question type is "numeric"' do
