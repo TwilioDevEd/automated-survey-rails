@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
     Answer.create(answer_params)
     current_question = Question.find(params[:question_id])
