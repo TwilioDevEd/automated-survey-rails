@@ -1,6 +1,10 @@
 class SurveysController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def index
+    @survey = Survey.includes(:questions).first
+  end
+
   def voice
     survey = Survey.first
     render xml: welcome_message_for_voice(survey)

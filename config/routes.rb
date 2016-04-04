@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'surveys#index'
   post 'surveys/voice' => 'surveys#voice'
   post 'surveys/sms' => 'surveys#sms'
 

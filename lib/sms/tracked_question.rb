@@ -22,7 +22,7 @@ module SMS
     end
 
     def empty?
-      cookies[:question].nil?
+      cookies[:question].nil? || cookies[:question].empty?
     end
 
     def present?

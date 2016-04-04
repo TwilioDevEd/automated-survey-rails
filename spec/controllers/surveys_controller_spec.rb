@@ -1,7 +1,23 @@
 require 'rails_helper'
 
 describe SurveysController do
-  let(:survey) { create(:survey, title: 'bees') }
+  let!(:survey) { create(:survey, title: 'bees') }
+
+  describe '#index' do
+    before { get :index }
+
+    it 'responds with ok' do
+      expect(response).to be_ok
+    end
+
+    it 'renders the :index template' do
+      expect(response).to render_template(:index)
+    end
+
+    it 'assigns @survey' do
+      expect(assigns(:survey)).to eq(survey)
+    end
+  end
 
   describe '#voice' do
     let!(:question) { create(:question, survey: survey) }

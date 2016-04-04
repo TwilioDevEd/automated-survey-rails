@@ -46,7 +46,7 @@ describe SMS::TrackedQuestion do
 
   describe '#empty?' do
     context 'when there is no tracked question' do
-      let(:cookies) { {} }
+      let(:cookies) { { question: '' } }
 
       it 'returns true' do
         expect(tracked_question.empty?).to be_truthy
