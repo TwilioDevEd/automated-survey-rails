@@ -28,7 +28,7 @@ describe SMS::CreateResponse do
 
       it 'uses the instruction for numeric questions' do
         expect(content_for('/Response/Message/Body'))
-          .to include('Reply with a number from "1" to "10" to this message')
+          .to include('Reply with a number from "0" to "9" to this message')
       end
     end
 

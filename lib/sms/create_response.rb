@@ -2,7 +2,7 @@ module SMS
   class CreateResponse
     INSTRUCTIONS = {
       'free'    => 'Reply to this message with your answer',
-      'numeric' => 'Reply with a number from "1" to "10" to this message',
+      'numeric' => 'Reply with a number from "0" to "9" to this message',
       'yes_no'  => 'Reply with "1" for YES and "0" for NO to this message'
     }.freeze
 
