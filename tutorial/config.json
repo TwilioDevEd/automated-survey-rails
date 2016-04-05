@@ -1,0 +1,6 @@
+{
+    "title": "Automated Surveys in Rails",
+    "repo": "TwilioDevEd/automated-survey-rails",
+    "description": "Learn to implement automated surveys using Ruby on Rails and Twilio",
+    "heroku": false
+}
