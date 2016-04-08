@@ -12,13 +12,13 @@
 
       ![Automated Survey Diagram](https://s3.amazonaws.com/howtodocs/automated-survey.png)
 
-      1. The end user calls or texts the survey phone number.
+      1. The end user calls or texts the survey's phone number.
 
-      1. Twilio gets the call or text and makes an HTTP request to your application for instructions on how to respond.
+      1. Twilio gets the call or text and makes an HTTP responding instructions request to your application.
 
       1. Your web application serves up [TwiML instructions](/docs/api/twiml) to `Gather` or `Record` the user input over the phone, or prompt for text input with `Message`.
 
-      1. After each question, Twilio makes another request to your server with the user's input, which your application stores in its database.
+      1. After each question, Twilio makes another request to your server with the user's input. Your application stores this input in its database.
 
       1. Your application returns a TwiML response to Twilio with instructions to either ask the next question or end the survey.
 
@@ -30,10 +30,10 @@
 
   .step(data-tile='Create a survey', data-file='app/controllers/surveys_controller.rb')
     :markdown
-      ## Create a survey
+      ## Creating a survey
 
-      In order to perform automated surveys we first need to have some
-      questions to ask. For your convenience, the application's
+      In order to perform an automated survey we first need to have
+      questions on it For your convenience, the application's
       repository already includes one survey that can be loaded into
       the database. If the database is configured correctly this
       survey will be loaded into the database when the app starts.
@@ -54,7 +54,7 @@
       ## The Interview Loop
 
       It is helpful to visualize your interaction with a user during a survey as a loop.
-      The chart below shows how that interaction will be handled. (click it to make it bigger):
+      The chart below shows how that interaction will be handled. (click on it for enlargement):
 
       ![Survey Flow Chart](//s3.amazonaws.com/howtodocs/flowchart.png)
 
@@ -88,16 +88,16 @@
     :markdown
       ## Responding to a Phone Call
 
-      Right after receiveing a call or a SMS, Twilio will send a request to the
+      Right after receiveing a call or an SMS, Twilio will send a request to the
       URL specified on the number configuration:
       * `/surveys/voice` for calls.
       * `/surveys/sms` for SMS.
 
       Each of these endpoints will receive the request and will use `Twilio::TwiML::Response` to return
-      a welcome message to the user. For phone users, the built message will contain a `Say` 
+      a welcome message to the user. For phone users, the built message will contain a `Say`
       verb with the message or a `Message` Verb for SMS.
 
-      It will also include a `Redirect` verb to the question enpoint, in order to continue the survey flow.
+      It will also include a `Redirect` verb to the question's enpoint in order to continue the survey flow.
 
       ---
       **See Also:**
@@ -110,10 +110,10 @@
     :markdown
       ## Question Controller
 
-      This controller is used only for calls. It produces the TwiML with the
-      question and instructions required to answer that question.
+      This controller is used for calls only. It produces the TwiML with the
+      questions and respective required instructions to answer those questions.
 
-      The sequence of question was modeled through the _action_ verb attribute.
+      The sequence of questions was modeled through the _action_ verb attribute.
 
       Let's see how we create the voice response.
 
@@ -123,7 +123,7 @@
 
   .step(data-file='lib/voice/create_response.rb')
     :markdown
-      ## Creating the response for voice
+      ## Creating the voice response
 
       If there is no question `Question::NoQuestion` we'll respond with an exit
       message.
@@ -134,14 +134,14 @@
       [`<Record>`](https://www.twilio.com/docs/api/twiml/record) verb. Both
       verbs take an `action` attribute and a `method` attribute.
 
-      Twilio will use both attributes to define our response endpoint that will
+      Twilio will use both attributes to define our response's endpoint that will
       be used as callback. That endpoint will be responsible to receive and
       store the caller's answer.
 
       During the Record verb creation, we also ask for a
       [Transcription](https://www.twilio.com/docs/api/rest/transcription).
       Twilio will process the record and extract useful text, making a request
-      to our response endpoint when transcription is done.
+      to our response's endpoint when transcription is done.
 
       Now let's see what to do with the response.
 
@@ -154,8 +154,9 @@
     :markdown
       ## Handling Responses
 
-      Ok, user finished speaking and pressing keys and Twilio just sent us a
-      request telling what happened, asking for further instructions.
+      When the user has finished speaking and dialing numbers, Twilio sends us a
+      request telling what happened and asking for further instructions on how to
+      proceed.
 
       At this point, we need to recover data from Twilio's request parameters
       using the `create` method on `Answer`.
@@ -180,7 +181,7 @@
   .step(data-file='app/controllers/surveys_controller.rb',
     data-highlight='4-6')
     :markdown
-      ## Display the survey results
+      ## Displaying the survey results
 
       For this route we simply query the database using the Active Record Query
       Interface.
@@ -188,7 +189,7 @@
       We display a [panel]() for every question on the last survey, and inside every
       panel we list the responses from different calls.
 
-      You can access this page in the applications root route `/`.
+      You can access this page in the application's root route `/`.
 
       ---
 
@@ -199,7 +200,8 @@
     :markdown
       ## Where to next?
 
-      It's done! If you have configured one of your Twilio
+      That's it!
+      If you have configured one of your Twilio
       numbers to the application built in this tutorial you should be
       able to take the survey and see the results under the root route of
       the application. We hope you found this sample application
@@ -214,4 +216,4 @@
 
       ### Did this help?
       Thanks for checking out this tutorial! If you have any feedback to share with us,
-      we'd love to hear it. Tweet [@twilio](twitter.com/twilio) to let us know what you think.
+      we'd love to hear it. [Contact support](//www.twilio.com/help/contact) to let us know what you think.
