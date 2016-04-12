@@ -30,7 +30,7 @@
 
   .step(data-tile='Create a survey', data-file='app/controllers/surveys_controller.rb')
     :markdown
-      ## Creating a survey
+      ## Creating a Survey
 
       In order to perform an automated survey we first need to have
       questions on it For your convenience, the application's
@@ -123,7 +123,7 @@
 
   .step(data-file='lib/voice/create_response.rb')
     :markdown
-      ## Creating the voice response
+      ## Creating the Voice Response
 
       If there is no question `Question::NoQuestion` we'll respond with an exit
       message.
@@ -181,12 +181,12 @@
   .step(data-file='app/controllers/surveys_controller.rb',
     data-highlight='4-6')
     :markdown
-      ## Displaying the survey results
+      ## Displaying the Survey Results
 
       For this route we simply query the database using the Active Record Query
       Interface.
 
-      We display a [panel]() for every question on the last survey, and inside every
+      We display a [panel](http://getbootstrap.com/components/#panels) for every question on the last survey, and inside every
       panel we list the responses from different calls.
 
       You can access this page in the application's root route `/`.
@@ -198,7 +198,7 @@
 
   .step
     :markdown
-      ## Where to next?
+      ## Where to Next?
 
       That's it!
       If you have configured one of your Twilio
