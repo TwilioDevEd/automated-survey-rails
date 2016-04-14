@@ -32,8 +32,7 @@
     :markdown
       ## Creating a Survey
 
-      In order to perform an automated survey we first need to have
-      questions on it For your convenience, the application's
+      For your convenience, the application's
       repository already includes one survey that can be loaded into
       the database. If the database is configured correctly this
       survey will be loaded into the database when the app starts.
@@ -82,22 +81,22 @@
 
       [numbers]: /user/account/phone-numbers/incoming
 
-  .step(data-title="Responding To A Phone Call",
+  .step(data-title="Responding To the Twilio Request",
     data-file='app/controllers/surveys_controller.rb',
     data-highlight='8-11,21-26')
     :markdown
-      ## Responding to a Phone Call
+      ## Responding to the Twilio Request
 
-      Right after receiveing a call or an SMS, Twilio will send a request to the
+      After receiveing a call or an SMS, Twilio will send a request to the
       URL specified on the number configuration:
       * `/surveys/voice` for calls.
       * `/surveys/sms` for SMS.
 
       Each of these endpoints will receive the request and will use `Twilio::TwiML::Response` to return
-      a welcome message to the user. For phone users, the built message will contain a `Say`
-      verb with the message or a `Message` Verb for SMS.
+      a welcome message to the user. For callers, the constructed message will contain a `Say`
+      verb. For requests coming from a text we'll respond with the `Message` Verb which will respond with an SMS.
 
-      It will also include a `Redirect` verb to the question's enpoint in order to continue the survey flow.
+      Our response will also include a `Redirect` verb to the question's enpoint in order to continue the survey flow.
 
       ---
       **See Also:**
@@ -111,7 +110,7 @@
       ## Question Controller
 
       This controller is used for calls only. It produces the TwiML with the
-      questions and respective required instructions to answer those questions.
+      questions.
 
       The sequence of questions was modeled through the _action_ verb attribute.
 
@@ -154,8 +153,8 @@
     :markdown
       ## Handling Responses
 
-      When the user has finished speaking and dialing numbers, Twilio sends us a
-      request telling what happened and asking for further instructions on how to
+      When the user has finished responding, Twilio sends us a
+      request telling us what happened and asking for further instructions on how to
       proceed.
 
       At this point, we need to recover data from Twilio's request parameters
@@ -183,18 +182,12 @@
     :markdown
       ## Displaying the Survey Results
 
-      For this route we simply query the database using the Active Record Query
-      Interface.
+      For this route we simply query the database using the [Active Record Query Interface](//guides.rubyonrails.org/active_record_querying.html).
 
       We display a [panel](http://getbootstrap.com/components/#panels) for every question on the last survey, and inside every
       panel we list the responses from different calls.
 
       You can access this page in the application's root route `/`.
-
-      ---
-
-      **See Also:**
-      * [Active Record Query Interface](//guides.rubyonrails.org/active_record_querying.html)
 
   .step
     :markdown
