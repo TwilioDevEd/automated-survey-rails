@@ -6,7 +6,7 @@ gem 'pg'
 gem 'puma'
 
 gem 'haml'
-gem 'twilio-ruby'
+gem 'twilio-ruby', '~> 5.0.0.rc17'
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

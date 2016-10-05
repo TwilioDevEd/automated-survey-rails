@@ -8,20 +8,20 @@ This application demonstrates how to use Twilio and TwiML to perform automated p
 
 This project is built using the [Ruby on Rails](http://rubyonrails.org/) web framework.
 
-1. First clone this repository and `cd` into it
+1. First clone this repository and `cd` into it.
 
    ```bash
    $ git clone git@github.com:TwilioDevEd/automated-survey-rails.git
    $ cd automated-survey-rails
    ```
 
-1. Install the dependencies
+1. Install the dependencies.
 
    ```bash
    $ bundle install
    ```
 
-1. Create the database and run migrations
+1. Create the database and run migrations.
 
    _Make sure you have installed [PostgreSQL](http://www.postgresql.org/). If on
    a Mac, I recommend [Postgres.app](http://postgresapp.com)_.
@@ -30,7 +30,7 @@ This project is built using the [Ruby on Rails](http://rubyonrails.org/) web fra
    $ bundle exec rake db:setup
    ```
 
-1. Make sure the tests succeed
+1. Make sure the tests succeed.
 
    ```bash
    $ bundle exec rspec
@@ -74,20 +74,6 @@ This project is built using the [Ruby on Rails](http://rubyonrails.org/) web fra
 
 
 That's it!
-
-### Expose the Application to the Wider Internet
-
-If you want your application to be accessible from the internet, you can either
-forward the necessary ports in your router, or use a tool like
-[ngrok](https://ngrok.com/) that will expose your local host to the internet.
-
-You can read [this blog post](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html)
-for more details on how to use ngrok. If you are using version 2.x, exposing
-a specific port should be easily done with the following command:
-
-```bash
-$ ngrok http 3000
-```
 
 ### How To Demo
 _Voice Surveys_. Call your Twilio phone number and follow the instructions.
