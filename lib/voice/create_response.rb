@@ -17,17 +17,18 @@ module Voice
     def response
       return exit_message if question == Question::NoQuestion
 
-      Twilio::TwiML::Response.new do |r|
-        r.Say question.body
-        r.Say INSTRUCTIONS.fetch(question.type)
-        if question.free?
-          r.Record action: answers_path(question.id),
-                   transcribe: true,
-                   transcribeCallback: transcriptions_path(question.id)
-        else
-          r.Gather action: answers_path(question.id)
-        end
-      end.to_xml
+      response = Twilio::TwiML::VoiceResponse.new
+      response.say question.body
+      response.say INSTRUCTIONS.fetch(question.type)
+      if question.free?
+        response.record action: answers_path(question.id),
+                        transcribe: true,
+                        transcribe_callback: transcriptions_path(question.id)
+      else
+        response.gather action: answers_path(question.id)
+      end
+
+      response.to_xml_str
     end
 
     private
@@ -35,10 +36,10 @@ module Voice
     attr_reader :question
 
     def exit_message
-      Twilio::TwiML::Response.new do |r|
-        r.Say 'Thanks for your time. Good bye'
-        r.Hangup
-      end.to_xml
+      response = Twilio::TwiML::VoiceResponse.new
+      response.say 'Thanks for your time. Good bye'
+      response.hangup
+      response.to_xml_str
     end
 
     def answers_path(question_id)
