@@ -24,7 +24,7 @@ module SMS
       response.append(message)
       message.append(body)
 
-      response.to_xml_str
+      response.to_s
     end
 
     private
@@ -39,7 +39,7 @@ module SMS
       response.append(message)
       message.append(body)
 
-      response.to_xml_str
+      response.to_s
     end
 
     def message_body

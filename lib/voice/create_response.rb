@@ -28,7 +28,7 @@ module Voice
         response.gather action: answers_path(question.id)
       end
 
-      response.to_xml_str
+      response.to_s
     end
 
     private
@@ -39,7 +39,7 @@ module Voice
       response = Twilio::TwiML::VoiceResponse.new
       response.say 'Thanks for your time. Good bye'
       response.hangup
-      response.to_xml_str
+      response.to_s
     end
 
     def answers_path(question_id)

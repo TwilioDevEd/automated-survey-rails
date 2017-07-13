@@ -23,6 +23,6 @@ class SurveysController < ApplicationController
     response.say "Thank you for taking the #{survey.title} survey"
     response.redirect question_path(survey.first_question.id), method: 'GET'
 
-    response.to_xml_str
+    response.to_s
   end
 end

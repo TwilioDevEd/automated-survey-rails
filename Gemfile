@@ -1,4 +1,4 @@
-ruby '2.3.0'
+ruby '2.3.4'
 source 'https://rubygems.org'
 
 gem 'coffee-rails', '~> 4.1.0'
@@ -8,7 +8,7 @@ gem 'puma'
 gem 'rails', '4.2.6'
 
 gem 'haml'
-gem 'twilio-ruby', '~> 5.0.0.rc22'
+gem 'twilio-ruby', '~> 5.0.0.rc26'
 
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
