@@ -17,11 +17,14 @@ module SMS
     def response
       return exit_message if question == Question::NoQuestion
 
-      Twilio::TwiML::Response.new do |r|
-        r.Message do |msg|
-          msg.Body message_body
-        end
-      end.to_xml
+      response = Twilio::TwiML::MessagingResponse.new
+      message = Twilio::TwiML::Message.new
+      body = Twilio::TwiML::Body.new(message_body)
+
+      response.append(message)
+      message.append(body)
+
+      response.to_s
     end
 
     private
@@ -29,11 +32,14 @@ module SMS
     attr_reader :question
 
     def exit_message
-      Twilio::TwiML::Response.new do |r|
-        r.Message do |msg|
-          msg.Body 'Thanks for your time. Good bye'
-        end
-      end.to_xml
+      response = Twilio::TwiML::MessagingResponse.new
+      message = Twilio::TwiML::Message.new
+      body = Twilio::TwiML::Body.new('Thanks for your time. Good bye')
+
+      response.append(message)
+      message.append(body)
+
+      response.to_s
     end
 
     def message_body
