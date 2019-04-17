@@ -18,8 +18,8 @@ module Voice
       return exit_message if question == Question::NoQuestion
 
       response = Twilio::TwiML::VoiceResponse.new
-      response.say question.body
-      response.say INSTRUCTIONS.fetch(question.type)
+      response.say(message: question.body)
+      response.say(message: INSTRUCTIONS.fetch(question.type))
       if question.free?
         response.record action: answers_path(question.id),
                         transcribe: true,
@@ -37,7 +37,7 @@ module Voice
 
     def exit_message
       response = Twilio::TwiML::VoiceResponse.new
-      response.say 'Thanks for your time. Good bye'
+      response.say(message: 'Thanks for your time. Good bye')
       response.hangup
       response.to_s
     end
