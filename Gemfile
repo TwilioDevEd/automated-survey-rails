@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder', '~> 2.9'
 gem 'pg', '~> 0.15'
 gem 'puma'
 gem 'rails', '4.2.11.1'
