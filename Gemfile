@@ -2,10 +2,10 @@
 
 source 'https://rubygems.org'
 
-gem 'coffee-rails'
-gem 'jbuilder'
+gem 'coffee-rails', '~> 5.0'
+gem 'jbuilder', '~> 2.9'
 gem 'pg', '~> 0.15'
-gem 'puma'
+gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.0'
 
 gem 'haml'
@@ -24,5 +24,6 @@ end
 
 group :test do
   gem 'factory_girl_rails'
-  gem 'rspec-rails'
+  gem 'rails-controller-testing', '~> 1.0'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
 end
