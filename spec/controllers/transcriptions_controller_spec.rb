@@ -10,7 +10,7 @@ describe TranscriptionsController do
 
   describe '#create' do
     it 'creates a transcription' do
-      post :create, attributes_for_transcription
+      post :create, params: attributes_for_transcription
       expect(answer.transcription.text).to eq('transcription text')
     end
   end
