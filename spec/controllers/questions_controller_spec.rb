@@ -5,7 +5,7 @@ describe QuestionsController do
     let(:survey)   { create(:survey) }
     let(:question) { create(:question, survey: survey, body: 'question') }
 
-    before { get :show, id: question.id }
+    before { get :show, params: { id: question.id } }
 
     it 'responds with the question' do
       expect(response.body).to include('question')

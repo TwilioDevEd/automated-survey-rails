@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jbuilder', '~> 2.0'
+gem 'coffee-rails', '~> 5.0'
+gem 'jbuilder', '~> 2.9'
 gem 'pg', '~> 0.15'
-gem 'puma'
-gem 'rails', '4.2.11.1'
+gem 'puma', '~> 4.1'
+gem 'rails', '~> 6.0.0'
 
 gem 'haml'
 gem 'twilio-ruby', '>= 5.0.0'
 
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -22,5 +24,6 @@ end
 
 group :test do
   gem 'factory_girl_rails'
-  gem 'rspec-rails'
+  gem 'rails-controller-testing', '~> 1.0'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
 end
