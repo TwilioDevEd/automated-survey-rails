@@ -4,7 +4,7 @@ class TranscriptionsController < ApplicationController
   def create
     text = params[:TranscriptionText]
     Transcription.create(answer_id: answer_for_transcription.id, text: text)
-    render nothing: true
+    head :ok
   end
 
   private

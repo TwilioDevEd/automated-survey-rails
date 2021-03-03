@@ -48,7 +48,7 @@ describe SurveysController do
     context 'when the user replies to a question' do
       before do
         request.cookies[:question] = first_question.serializable_hash.to_yaml
-        post :sms, Body: 'yes', From: 'from-phone-number'
+        post :sms, params: { Body: 'yes', From: 'from-phone-number' }
       end
 
       it 'responds with the next question' do
