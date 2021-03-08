@@ -6,9 +6,9 @@
 
 ![](https://github.com/TwilioDevEd/automated-survey-rails/actions/workflows/build.yml/badge.svg)
 
-## About
-
 This application demonstrates how to use Twilio and TwiML to perform automated phone surveys.
+
+[Read the full tutorial here!](https://www.twilio.com/docs/howto/walkthrough/automated-survey/ruby/rails)
 
 ## Note: protect your webhooks
 
