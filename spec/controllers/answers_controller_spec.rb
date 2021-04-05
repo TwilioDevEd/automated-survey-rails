@@ -9,7 +9,7 @@ describe AnswersController do
 
     it 'creates an answer' do
       expect do
-        post :create, attributes_for_answer
+        post :create, params: attributes_for_answer
       end.to change { Answer.count }.by(1)
     end
 
@@ -17,7 +17,7 @@ describe AnswersController do
       let(:question) { first_question }
 
       it 'responds with the next question' do
-        post :create, attributes_for_answer
+        post :create, params: attributes_for_answer
         expect(response.body).to include('last')
       end
     end
@@ -26,7 +26,7 @@ describe AnswersController do
       let(:question) { last_question }
 
       it 'responds with the thanks message' do
-        post :create, attributes_for_answer
+        post :create, params: attributes_for_answer
         expect(response.body).to include('Thanks')
       end
     end

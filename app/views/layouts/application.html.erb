@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Automated Surveys</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'stylesheets/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'javascript/application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <div class="navbar-header"><a class="navbar-brand" href="/"><i class="fa fa-th-list"></i>Automated Surveys</a></div>
+        <div>
+          <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row pt-3">
+        <div class="col">
+          <%= yield %>
+        </div>
+      </div>
+      <footer>Made with ❤️ by your pals
+        <a href="http://www.twilio.com">@twilio</a></footer>
+    </div>
+  </body>
+</html>
