@@ -1,0 +1,54 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: sdoc
+    versions:
+    - 2.0.3
+    - 2.0.4
+    - 2.1.0
+  - dependency-name: twilio-ruby
+    versions:
+    - 5.46.1
+    - 5.47.0
+    - 5.48.0
+    - 5.49.0
+    - 5.50.0
+  - dependency-name: nokogiri
+    versions:
+    - 1.11.1
+    - 1.11.2
+  - dependency-name: pg
+    versions:
+    - 1.2.3
+  - dependency-name: haml
+    versions:
+    - 5.2.1
+  - dependency-name: rake
+    versions:
+    - 13.0.3
+  - dependency-name: rack
+    versions:
+    - 1.6.13
+  - dependency-name: puma
+    versions:
+    - 3.12.6
+  - dependency-name: jbuilder
+    versions:
+    - 2.9.1
+  - dependency-name: coffee-rails
+    versions:
+    - 4.2.2
+  - dependency-name: loofah
+    versions:
+    - 2.9.0
+  - dependency-name: sass-rails
+    versions:
+    - 6.0.0
+  - dependency-name: jquery-rails
+    versions:
+    - 4.3.4
