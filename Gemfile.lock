@@ -60,12 +60,12 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    autoprefixer-rails (10.2.4.0)
-      execjs
+    autoprefixer-rails (10.2.5.0)
+      execjs (< 2.8.0)
     bindex (0.8.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
-    bootstrap (5.0.0)
+    bootstrap (5.0.1)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.9.2, < 3)
       sassc-rails (>= 2.0.0)
@@ -114,13 +114,13 @@ GEM
     msgpack (1.4.2)
     multipart-post (2.1.1)
     nio4r (2.5.7)
-    nokogiri (1.11.3-arm64-darwin)
+    nokogiri (1.11.4-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.11.3-x64-mingw32)
+    nokogiri (1.11.4-x64-mingw32)
       racc (~> 1.4)
-    nokogiri (1.11.3-x86_64-darwin)
+    nokogiri (1.11.4-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.11.3-x86_64-linux)
+    nokogiri (1.11.4-x86_64-linux)
       racc (~> 1.4)
     pg (1.2.3)
     popper_js (2.9.2)
@@ -240,7 +240,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
-  bootstrap (~> 5.0.0)
+  bootstrap (~> 5.0.1)
   byebug
   factory_bot_rails
   jbuilder (~> 2.7)
