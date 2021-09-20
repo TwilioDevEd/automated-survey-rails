@@ -134,7 +134,7 @@ GEM
       racc (~> 1.4)
     pg (1.2.3)
     popper_js (2.9.3)
-    puma (5.4.0)
+    puma (5.5.0)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -256,7 +256,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.7)
   pg
-  puma (~> 5.4)
+  puma (~> 5.5)
   rack-mini-profiler (~> 2.3)
   rails (~> 6.1.4)
   rails-controller-testing
