@@ -4,12 +4,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '~> 3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.4'
+gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 5.5'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.4'
+gem 'webpacker', '~> 5.4', '>= 5.4.3'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -23,9 +23,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rails-controller-testing'
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
+  gem 'rails-controller-testing', '>= 1.0.5'
+  gem 'rspec-rails', '>= 5.0.2'
+  gem 'factory_bot_rails', '>= 6.2.0'
 end
 
 group :development do
@@ -41,5 +41,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "twilio-ruby", "~> 5.58"
+gem "twilio-ruby", "~> 5.58", ">= 5.58.3"
 gem "bootstrap", "~> 5.1.0"
