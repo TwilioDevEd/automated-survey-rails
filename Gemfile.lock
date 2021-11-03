@@ -136,7 +136,7 @@ GEM
     popper_js (2.9.3)
     puma (5.5.2)
       nio4r (~> 2.0)
-    racc (1.5.2)
+    racc (1.6.0)
     rack (2.2.3)
     rack-mini-profiler (2.3.3)
       rack (>= 1.2.0)
@@ -220,7 +220,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twilio-ruby (5.60.0)
+    twilio-ruby (5.61.0)
       faraday (>= 0.9, < 2.0)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
@@ -263,7 +263,7 @@ DEPENDENCIES
   rspec-rails
   spring
   turbolinks (~> 5)
-  twilio-ruby (~> 5.60)
+  twilio-ruby (~> 5.61)
   tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.4)
