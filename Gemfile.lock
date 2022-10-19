@@ -91,7 +91,7 @@ GEM
     faraday (2.6.0)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
-    faraday-net_http (3.0.0)
+    faraday-net_http (3.0.1)
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw32)
     globalid (1.0.0)
@@ -229,7 +229,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twilio-ruby (5.72.1)
+    twilio-ruby (5.73.0)
       faraday (>= 0.9, < 3.0)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
@@ -272,7 +272,7 @@ DEPENDENCIES
   rspec-rails
   spring
   turbolinks (~> 5)
-  twilio-ruby (~> 5.72)
+  twilio-ruby (~> 5.73)
   tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.4)
