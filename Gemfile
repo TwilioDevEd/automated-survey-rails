@@ -41,5 +41,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "twilio-ruby", "~> 5.73"
+gem "twilio-ruby", "~> 5.74"
 gem "bootstrap", "~> 5.2.3"
