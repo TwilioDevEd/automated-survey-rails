@@ -141,7 +141,7 @@ GEM
     pg (1.4.5)
     pg (1.4.5-x64-mingw32)
     popper_js (2.11.6)
-    puma (6.0.1)
+    puma (6.0.2)
       nio4r (~> 2.0)
     racc (1.6.1)
     rack (2.2.4)
