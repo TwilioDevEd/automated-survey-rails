@@ -222,7 +222,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twilio-ruby (5.76.0)
+    twilio-ruby (5.77.0)
       faraday (>= 0.9, < 3.0)
       jwt (>= 1.5, < 3.0)
       nokogiri (>= 1.6, < 2.0)
@@ -265,7 +265,7 @@ DEPENDENCIES
   rspec-rails
   spring
   turbolinks (~> 5)
-  twilio-ruby (~> 5.76)
+  twilio-ruby (~> 5.77)
   tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.4)
