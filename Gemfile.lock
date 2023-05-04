@@ -116,7 +116,7 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.1)
+    mini_portile2 (2.8.2)
     minitest (5.18.0)
     msgpack (1.6.0)
     net-imap (0.3.4)
@@ -221,7 +221,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twilio-ruby (5.77.0)
+    twilio-ruby (6.0.0)
       faraday (>= 0.9, < 3.0)
       jwt (>= 1.5, < 3.0)
       nokogiri (>= 1.6, < 2.0)
@@ -264,7 +264,7 @@ DEPENDENCIES
   rspec-rails
   spring
   turbolinks (~> 5)
-  twilio-ruby (~> 5.77)
+  twilio-ruby (~> 6.0)
   tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.4)
